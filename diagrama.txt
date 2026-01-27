@@ -1,0 +1,20 @@
+classDiagram
+     class Usuario {
+          +String nombre
+          +String email
+          +login() bool
+}
+
+   class Carrito {
+          -List~Producto~ productos
+          +agregarProducto() void
+          +calcularTotal() float
+}
+   class Producto {
+          +String nombre
+          -Float precio
+          +setPrecio(p) float
+}
+
+Usuario --> Carrito : Asociación
+Producto --* Carrito : Composición
