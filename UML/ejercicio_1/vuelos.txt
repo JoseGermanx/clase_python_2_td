@@ -1,0 +1,29 @@
+classDiagram
+     class Pasajero {
+          +String nombre
+          +String email
+          +String dni
+}
+
+   class Reserva {
+          +String codigo
+          +Date fecha
+          +String estado
+}
+
+   class Vuelo {
+          +String origen
+          +String destino
+          +String hora
+          +Avion avion
+                  
+}
+
+ class Avion {
+          +String modelo
+          +int capacidad
+}
+
+Pasajero "1" --> "*" Reserva: asociación 1 a muchos
+Reserva "1" --> "1" Vuelo
+Vuelo *-- Avion : composición
