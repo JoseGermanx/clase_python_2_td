@@ -1,0 +1,27 @@
+classDiagram
+     class Cliente {
+          +String nombre
+          +String email
+          +comprar()
+}
+
+   class Carrito {
+          -List~Producto~ productos
+          +agregar(pro) void
+          +vaciar() void
+          +getProductos(): List~Producto~
+}
+   class Producto {
+          +String nombre
+          -Float precio
+ 
+}
+
+   class Factura {
+          -Float total
+          +imprimir() void
+}
+
+Cliente "1" --> "1" Carrito: asociación
+Carrito "1" *-- "*" Producto: composición
+Factura "1" --> "1" Carrito: asociación
