@@ -1,0 +1,56 @@
+classDiagram
+     class Usuario {
+          + nombre: String
+          + email: String
+          + validarAcceso(): Bool (Abstract)
+}
+
+     class Estudiante {
+          + curso: Curso
+          - promedio: Float
+          + validarAcceso(): Bool
+          - inscribirse(curso: Curso): void
+          - calcularPromedio(notas: List~Nota~): float 
+}
+
+
+     class Docente {
+          + titulo: String
+          + validarAcceso(): Bool
+          __+ imprimirActas(notas: List~Nota~): void__
+        
+}
+
+     class Curso {
+          + codigo: String
+          + nombre: String
+          - estado: String
+          + materias: List~Materia~
+          + estudiantes: List~Estudiante~
+          + docente: Docente
+          - cambiarEstado(): void
+          + agregarEstudiante(estudiante: Estudiante): void
+          + agregarMateria(materia: Materia): void
+  
+}
+
+     class Materia {
+          + nombre: String
+          + horas: float
+        
+}
+
+     class Nota {
+          - valor: float
+          + getNota(): float           
+  
+}
+
+
+Estudiante --|> Usuario
+Docente --|> Usuario
+
+Estudiante "*" --* "1" Curso
+Docente "1" --> "1" Curso
+Materia "*" --* "1" Curso
+Estudiante "1" *-- "*" Nota
