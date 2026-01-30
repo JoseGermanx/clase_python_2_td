@@ -30,26 +30,32 @@ class Vehiculo:
         print("Este método lo implementará cada subclase.")
 
 #TODO: Implementar para herencia multiple de atributos
-class Motor:
-    def __init__(self, kilometros, motor):
+class VehiculoMotor(Vehiculo):
+    def __init__(self, marca, modelo, anio, ruedas, color, numero_serie, asientos, kilometros, motor):
+        super().__init__(marca, modelo, anio, ruedas, color, numero_serie, asientos)
         self.kilometros = kilometros
         self.motor = motor
         
-class Auto(Vehiculo):
+class Auto(VehiculoMotor):
     def moverse(self):
         print(f"El auto {self.marca} va andando por la carretera.")
 
-class Motocicleta(Vehiculo):
-    def __init__(self, marca, modelo, anio, ruedas, color, numero_serie, asientos, cilindrada):
-        super().__init__(marca, modelo, anio, ruedas, color, numero_serie, asientos)
+class Camion(VehiculoMotor):
+    def moverse(self):
+        print(f"El camión {self.marca} va full con la carga.")
+
+class SUV(VehiculoMotor):
+    def moverse(self):
+        print(f"La SUV {self.marca} va vía la playa con toda la familia.")
+
+
+class Motocicleta(VehiculoMotor):
+    def __init__(self, marca, modelo, anio, ruedas, color, numero_serie, asientos, kilometros, motor, cilindrada):
+        super().__init__(marca, modelo, anio, ruedas, color, numero_serie, asientos, kilometros, motor)
         self.cilindrada = cilindrada
 
     def moverse(self):
         print(f"La motocicleta {self.marca}-{self.cilindrada}cc, va a toda velocidad por la pista.")
-
-class Camion(Vehiculo):
-    pass
-
 
 # A pedal
 class Bicicleta(Vehiculo):
@@ -58,9 +64,10 @@ class Bicicleta(Vehiculo):
 
 
 vehiculos = [
-    Auto("Toyota", "Corolla", 2000, 4, "negra", "werwerwer", 5),
-    Bicicleta("Trek", "Marlin 4", 2000, 2, "negra", "werwerwer", 2),
-    Motocicleta("Yamaha", "MT-07", 2000, 2, "Negra", "123423rff", 2, 550)
+    Auto("Toyota", "Corolla", 2000, 4, "Rojo", "sdgoñihdfg789723453", 5, 20000, "4L"),
+    Bicicleta("Trek", "Marlin 4", 2000, 2, "Azul", "3245983rghjedg", 2),
+    Motocicleta("Yamaha", "MT-07", 2000, 2, "Negro", "234'902734'892jk3hjksdfg", 2, 5000, "1L", 500),
+    Camion("Mercedes-Benz", "Actros 1845", 2021, 3, "Blanco", "2342342342344", 5, 100000, "12.8 L"),
 ]
 
 for vehiculo in vehiculos:
