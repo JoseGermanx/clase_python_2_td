@@ -4,9 +4,10 @@ entrada = input("Ingresa un número entero: ")
 
 try:
     numero = int(entrada) #ValueError
+    10/numero
     print(f"Número válido: {numero}")
-except ValueError:
-    print("Error: debes ingresar un número válido.")
+except Exception as e:
+    print(e)
 
 
 
