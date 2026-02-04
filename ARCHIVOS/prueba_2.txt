@@ -1,0 +1,5 @@
+id,username,email,role
+101,jdoe,jdoe@example.com,admin
+102,asmith,asmith@example.com,user
+103,rjones,rjones@example.com,user
+104,bwilson,bwilson@example.com,editor

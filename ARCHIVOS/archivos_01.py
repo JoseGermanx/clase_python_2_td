@@ -15,10 +15,14 @@ try:
     contenido = archivo.read()
     # archivo.close()
     print(contenido)
+    print(f"Nombre: {archivo.name}")
+    print(f"Nombre: {archivo.mode}")
+
     print("===========================")
     print("===========================")
     contenido_2 = archivo.read() # no se puede acceder porque el archivo ya fue cerrado (line16)
     print(contenido_2)
+
     print(f"Verificar si archivo está cerrado: {archivo.closed}")
 
 except FileNotFoundError:
