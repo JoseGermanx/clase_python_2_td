@@ -48,7 +48,7 @@ try:
     size = os.stat(ruta_archivo).st_size
     print(f"Tamaño: {size} bytes")
 
-    #lógica según el tamaño
+    #lógica según el tamaño  ->> Agregar una tercera escala  archivos mayores a 2000 bytes (readlines())
     if size < 500:
         contenido = archivo.read()
         print(contenido)
