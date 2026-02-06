@@ -28,26 +28,34 @@
 import os
 import shutil
 
-carpeta_detino = "backup"
+from datetime import datetime
+
+carpeta_detino = "cvs"
+archivo_logs = "logs/logs.txt"
 
 print("Sistema de creación de archivos de texto")
 nombre_archivo = input("Ingresa el nombre del archivo: ")
 contenido_archivo = input("Ingresa el contenido de tu documento de texto: ")
 
 try:
-    with open(nombre_archivo, "w") as archivo:
+    with open(nombre_archivo, "r") as archivo:
         archivo.write(contenido_archivo)
-        print("Archivo escrito correctamente.")
+
+    with open(archivo_logs, "a") as logs:
+        logs.write(f"Se ha creado un nuevo archivo con el nombre {nombre_archivo} -{datetime.now()} .\n") # log
 
     os.makedirs(carpeta_detino, exist_ok=True)
 
     shutil.move(nombre_archivo, carpeta_detino)
-    print("Archivo movido correctamente.")
+
+    with open(archivo_logs, "a") as logs:
+        logs.write(f"Archivo con el nombre {nombre_archivo} movido a la carpeta {carpeta_detino} -{datetime.now()} .\n") # log
 
     print(archivo.closed)
 
-except FileNotFoundError:
-    print("Archivo no encontrado.")
+except FileNotFoundError as error:
+    with open(archivo_logs, "a") as logs:
+        logs.write(f"Error del sistema FileNotFoundError - {error} - {datetime.now()} .\n")
 
 except PermissionError as error:
     print("No tienes permisos para ejecutar esta acción: ", error)
